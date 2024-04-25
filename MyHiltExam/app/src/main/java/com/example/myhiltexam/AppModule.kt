@@ -11,13 +11,13 @@ import javax.inject.Qualifier
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-//    @Qualifier
-//    @Retention(AnnotationRetention.BINARY)
-//    annotation class Type1
-//
-//    @Qualifier
-//    @Retention(AnnotationRetention.BINARY)
-//    annotation class Type2
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class Type3
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class Type4
 
     @Named("Type1")
     @Provides
@@ -26,6 +26,14 @@ object AppModule {
     @Named("Type2")
     @Provides
     fun provideString02() = "SWM.com"
+
+    @Type3
+    @Provides
+    fun provideString03() = "Qualifier Type3"
+
+    @Type4
+    @Provides
+    fun provideString04() = "Qualifier Type4"
 
     @Provides
     fun provideTestData() = TestData(3)

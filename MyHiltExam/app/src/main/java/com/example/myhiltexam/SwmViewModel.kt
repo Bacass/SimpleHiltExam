@@ -9,7 +9,7 @@ import javax.inject.Inject
 import javax.inject.Named
 
 @HiltViewModel
-class SwmViewModel @Inject constructor(@Named("Type2") var string02: String): ViewModel() {
+class SwmViewModel @Inject constructor(@Named("Type2") var string01: String, @AppModule.Type4 var string02: String): ViewModel() {
 
     @Inject
     @ApplicationContext
@@ -17,5 +17,7 @@ class SwmViewModel @Inject constructor(@Named("Type2") var string02: String): Vi
 
     fun isExistContext(): Boolean = context != null
 
-    fun getString(): String = string02
+    fun getString1(): String = string01
+
+    fun getString2(): String = string02
 }
