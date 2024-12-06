@@ -24,6 +24,9 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var testData: TestData
 
+    @Inject
+    lateinit var something: Something
+
     private val viewModel: SwmViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +56,8 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "isExistContext : ${viewModel.isExistContext()}")
         Log.d(TAG, "getString1 : ${viewModel.getString1()}")
         Log.d(TAG, "getString2 : ${viewModel.getString2()}")
+
+        something.doSomething(TAG, "This function is not need AppModule init")
     }
 
 
