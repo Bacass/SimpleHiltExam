@@ -1,10 +1,10 @@
 package com.example.myhiltexam
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import javax.inject.Named
@@ -59,9 +59,4 @@ class MainActivity : AppCompatActivity() {
 
         something.doSomething(TAG, "This function is not need AppModule init")
     }
-
-
-
-
-
 }

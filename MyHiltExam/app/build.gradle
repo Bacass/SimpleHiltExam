@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'com.google.devtools.ksp'
     id 'dagger.hilt.android.plugin'
+    id 'com.diffplug.spotless'
 }
 
 android {
@@ -53,4 +54,41 @@ dependencies {
     implementation "androidx.activity:activity-ktx:1.9.3"
     // Architectural Components
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7"
+}
+
+// Spotless 설정
+spotless {
+    kotlin {
+        target 'src/**/*.kt'
+        targetExclude 'src/androidTest/**/*.kt', 'src/test/**/*.kt'
+        ktlint('0.50.0')
+            .setEditorConfigPath("$rootDir/.editorconfig")
+            .editorConfigOverride([
+                'ktlint_no-wildcard-imports': 'disabled',
+                'ktlint_function-naming': 'disabled',
+                'ktlint_value-parameter-comment': 'disabled'
+            ])
+    }
+
+    kotlinGradle {
+        target '*.gradle.kts'
+        ktlint('0.50.0')
+            .setEditorConfigPath("$rootDir/.editorconfig")
+            .editorConfigOverride([
+                'ktlint_no-wildcard-imports': 'disabled',
+                'ktlint_function-naming': 'disabled',
+                'ktlint_value-parameter-comment': 'disabled'
+            ])
+    }
+
+    format 'xml', {
+        target 'src/**/res/**/*.xml'
+        eclipseWtp('xml')
+    }
+
+    format 'misc', {
+        target '**/*.gradle', '**/*.md', '**/.gitignore'
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
 }

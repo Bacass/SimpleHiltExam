@@ -1,0 +1,57 @@
+# EditorConfig 파일: 코드 에디터의 일관된 코딩 스타일을 위한 설정
+# 이 파일이 프로젝트의 루트 .editorconfig 파일임을 나타냄
+root = true
+
+# 모든 파일에 적용되는 기본 설정
+[*]
+# 문자 인코딩을 UTF-8로 설정 (한글 등 유니코드 문자 지원)
+charset = utf-8
+# 줄바꿈 문자를 LF(Line Feed)로 설정 (Unix/Linux 스타일, Git과 호환성 좋음)
+end_of_line = lf
+# 들여쓰기를 탭 대신 스페이스로 설정 (일관된 화면 표시)
+indent_style = space
+# 들여쓰기 크기를 4칸으로 설정 (가독성과 간결함의 균형)
+indent_size = 4
+# 파일 끝에 빈 줄을 추가 (POSIX 표준, Git diff 향상)
+insert_final_newline = true
+# 줄 끝의 불필요한 공백 제거 (깔끔한 코드 유지)
+trim_trailing_whitespace = true
+# 한 줄의 최대 길이를 120자로 제한 (현대적 모니터 환경 고려)
+max_line_length = 120
+
+# Kotlin/Kotlin Script 파일 전용 설정
+[*.{kt,kts}]
+# Kotlin 코드의 들여쓰기 크기 (4칸이 Kotlin 표준)
+indent_size = 4
+# 함수 인자나 체이닝에서 연속되는 줄의 들여쓰기 크기
+continuation_indent_size = 4
+# Kotlin 코드의 한 줄 최대 길이
+max_line_length = 120
+
+# ktlint 규칙 조정 (Compose 프로젝트 특성에 맞게 수정)
+# Compose 함수는 대문자로 시작해야 하므로 function-naming 규칙 비활성화
+ktlint_function-naming = disabled
+# wildcard import 허용 (Android 프로젝트에서 자주 사용되며 가독성 향상)
+ktlint_no-wildcard-imports = disabled
+# 파라미터 옆 인라인 주석 허용 (매개변수 설명에 유용)
+ktlint_value-parameter-comment = disabled
+
+# XML 파일 설정 (Android 레이아웃, 매니페스트 등)
+[*.{xml,xml.dist}]
+# XML은 중첩이 깊어질 수 있으므로 4칸 들여쓰기 유지
+indent_size = 4
+
+# YAML 파일 설정 (GitHub Actions, Docker Compose 등)
+[*.{yml,yaml}]
+# YAML은 들여쓰기가 구문의 일부이므로 2칸 표준 사용
+indent_size = 2
+
+# JSON 파일 설정 (설정 파일, API 응답 등)
+[*.json]
+# JSON은 데이터 구조가 명확하므로 2칸으로 간결하게
+indent_size = 2
+
+# Markdown 파일 설정 (README, 문서 등)
+[*.md]
+# Markdown에서는 줄 끝 공백이 의미를 가질 수 있으므로 제거하지 않음
+trim_trailing_whitespace = false 
